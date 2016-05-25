@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include header.ejs %>
+</head>
+<body>
+
+	<div class="container" style="height:800px;">
+
+	  <div class="row">
+	    <div class="col-md-3">
+        <h3>Add Moive</h3>
+	      <form id="frmwine" role="form">
+	        <div class="form-group">
+	          <label for="inputTitle">Title</label>
+	          <input type="text" class="form-control" id="inputTitle" placeholder="Title" />
+	        </div>
+			<!--<div class="form-group">-->
+			<!--  <label for="inputGenre">Genre</label>-->
+			<!--	<select class="form-control" id="inputGenre" type="text">-->
+			<!--		<option value="1">Action</option>-->
+			<!--		<option value="2">Animation</option>-->
+			<!--		<option value="3">Drama</option>-->
+			<!--		<option value="4">Family</option>-->
+			<!--		<option value="5">Romance</option>-->
+			<!--	</select>-->
+			<!--</div>-->
+	        <div class="form-group">
+	          <label for="inputYear">Year</label>
+	          <input type="text" class="form-control" id="inputYear" placeholder="Year" />
+	        </div>
+
+	  <!--      <div class="form-group">-->
+	  <!--        <label for="inputDirector">Director</label>-->
+	  <!--        <input type="text" class="form-control" id="inputDirector" placeholder="Director" />-->
+	  <!--      </div>-->
+
+	  <!--      <div class="form-group">-->
+	  <!--        <label for="inputPrice">Price</label>-->
+	  <!--        <input type="text" class="form-control" id="inputPrice"  placeholder="Price" />-->
+	  <!--      </div>-->
+
+	  <!--      <div class="form-group">-->
+	  <!--        <label for="inputPicture">Picture</label>-->
+	  <!--        <input type="text" class="form-control" id="inputPicture" placeholder="Picture" />-->
+	  <!--      </div>-->
+
+			<!--<div class="form-group">-->
+			<!--  <label for="inputDescription">Description</label>-->
+			<!--  <input type="text" class="form-control" id="inputDescription" placeholder="Description" />-->
+			<!--</div>-->
+
+	        <div class="form-group text-right">
+	          <button id="btnAdd" type="button" class="btn btn-danger">Submit</button>
+	        </div>
+	      </form>
+	    </div>
+
+	  </div>
+
+	</div>
+
+</body>
+</html>
+<script type="text/javascript">
+;jQuery(function ($) {
+	$('#btnAdd').on('click', function () {
+		var data = {
+// 			price: $('#inputPrice').val(),
+            name: $('#inputTitle').val(),
+			year: $('#inputYear').val(),
+// 			director: $('#inputDirector').val(),
+// 			image: $('#inputPicture').val(),
+// 			description: $('#inputDescription').val(),
+// 			category: $('#inputGenre').val()
+		};
+
+		$.post('/wines', data, function (ret) {
+			if (ret.result == true) {
+				alert(ret.msg + ' has been added!');
+				// window.location.href = '/admin';
+			} else {
+				alert('add failure');
+			}
+		});
+	})
+})
+</script>

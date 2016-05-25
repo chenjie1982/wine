@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include header %>
+</head>
+
+<body>
+<header>
+   
+</header>
+<div class="container">
+    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <div class="row">
+        <div class="col-md-8">
+            <% include product %>
+        </div>
+    </div>
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+<footer>
+   
+</footer>
+
+</html>
+
+<script type="text/javascript">
+    AddtoCart = function(movieId) {
+
+//    }
+//    ;jQuery(function ($) {
+//        $('#addToCart').on('click', function () {
+
+            //var mid = $('#movieid').attr('mid');
+            var data = {
+                'movieId' : movieId.id
+            };
+            var uid = $('#userId').attr('uid');
+            if (uid === undefined) {
+                window.location.href = '/login';
+            } else {
+                $.post('/addToCart', data, function(ret){
+                    num = (parseInt($("#NumOfItems").text())+1);
+                    $('#NumOfItems').text(num );
+                });
+            }
+//        });
+    }
+</script>

@@ -1,0 +1,20 @@
+
+<% for(var i=0; i< movies.length; i++) { %>
+    <% if (i % 3 ==  0) { %>
+    <div class="row">
+    <% } %>
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <a href=<%= "/wines/"+movies[i]._id %>>link</a>
+                <div class="caption">
+                    <h3><a href=<%= "/wines/"+movies[i]._id %>><%= movies[i].name %></a></h3>
+                    <p>$<%= movies[i].grapes %></p>
+                    <button id="<%= movies[i]._id %>" mid="<%= movies[i]._id %>" class="btn btn-primary" role="button" onclick=AddtoCart(this) >add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    <% if ((i+1) % 3 ==  0 || i == movies.length-1) { %>
+    </div>
+    <% } %>
+<% } %>
