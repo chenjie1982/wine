@@ -101,9 +101,9 @@ var express = require('express'),
 wines = require('./routes/wines');
 
 var app = express();
-app.set('views', __dirname + '/views');
-app.engine('.html', require('ejs').__express);
-app.set('view engine', 'html');
+// app.set('views', __dirname + '/views');
+// app.engine('.html', require('ejs').__express);
+// app.set('view engine', 'html');
 
 
 app.configure(function () {
@@ -111,16 +111,20 @@ app.configure(function () {
     app.use(express.bodyParser());
 });
 
-app.get('/wines', wines.findAll);
-app.get('/wines/:id', wines.findById);
 
-app.post('/wines', wines.addWine);
-app.put('/wines/:id', wines.updateWine);
-app.delete('/wines/:id', wines.deleteWine);
 
-app.get('/addWines', function (req, res) {
-	res.render('addwine');
-});
+
+app.get('/cmpe281', wines.findAll);
+
+// app.get('/wines', wines.findAll);
+// app.get('/wines/:id', wines.findById);
+app.post('/add', wines.addwine);
+// app.put('/wines/:id', wines.updateWine);
+// app.delete('/wines/:id', wines.deleteWine);
+
+// app.get('/addWines', function (req, res) {
+// 	res.render('addwine');
+// });
 
 app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
    var addr = this.address();
